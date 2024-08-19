@@ -11,9 +11,9 @@ IPAddress server(IP_ADRESS); //IPAdress for Server/WiFi.
 uint16_t port = PORT_NUMB; //Portnumber
 String servStr= server.toString(); //To add IP-adress to sprintf and print to client 
 
-void printWifiStatus();
+void print_WiFi_status();
 void read_request();
-void connectToWiFi();
+void connect_to_WiFi();
 
 
 // Initialize the WiFi client library
@@ -41,7 +41,7 @@ void read_request() {
   } 
 
 }
-void printWifiStatus() {
+void print_WiFi_status() {
 /* -------------------------------------------------------------------------- */ 
 
 
@@ -62,7 +62,7 @@ void printWifiStatus() {
   Serial.println(" dBm");
 
 }
-void connectToWiFi()
+void connect_to_WiFi()
 {
   // check for the WiFi module:
   if (WiFi.status() == WL_NO_MODULE) {
@@ -88,14 +88,14 @@ void connectToWiFi()
 
   }
   // you're connected now, so print out the status:
-  printWifiStatus();
+  print_WiFi_status();
 
 
 }
  
 // this method makes a HTTP connection to the server:
 /* -------------------------------------------------------------------------- */
-void httpRequest(String printToClient) {
+void http_request(String printToClient) {
 /* -------------------------------------------------------------------------- */  
   // close any connection before send a new request.
   // This will free the socket on the NINA module

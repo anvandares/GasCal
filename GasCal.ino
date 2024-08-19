@@ -24,7 +24,7 @@ void setup() {
   }
  
 
-  connectToWiFi();
+  connect_to_WiFi();
   Serial.println("\nStarting connection to server...");
   
   RTC.begin();
@@ -45,7 +45,7 @@ void loop() {
 
   
   if(_delay(lastConnectionTime,10000UL)){  // if ten seconds have passed since your last connection,
-      httpRequest(client_print());                       // then connect again and send data:  
+      http_request(client_print());                       // then connect again and send data:  
       lastConnectionTime = millis();   // notes the time that the connection was made:
         
 
@@ -55,9 +55,9 @@ void loop() {
 String client_print()
 {
   
-  int gas=detectGas();
-  int temp=dhtTemp();
-  int hum=dhtHum();
+  int gas=detect_gas();
+  int temp=dht_temp();
+  int hum=dht_hum();
   String time=get_time();
   char reportTemp[1020];
  
