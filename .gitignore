@@ -4,4 +4,5 @@ arduino_secrets.h
 arduino_secrets/
 # ignore ALL files in ANY directory named Slask
 Slask.h
+Slask/
 
