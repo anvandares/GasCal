@@ -2,9 +2,6 @@
 arduino_secrets/**/*
 arduino_secrets.h
 arduino_secrets/
-<<<<<<< HEAD
-Slask/
+# ignore ALL files in ANY directory named Slask
+Slask.h
 
-=======
-slask/
->>>>>>> 63d978120e284b4625ecbeb15d0dfbf3e1a10db1
