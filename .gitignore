@@ -1,2 +1,5 @@
 # ignore ALL files in ANY directory named arduino_secrets
 arduino_secrets/**/*
+arduino_secrets.h
+arduino_secrets/
+
