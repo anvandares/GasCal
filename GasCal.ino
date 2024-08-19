@@ -34,7 +34,7 @@ void setup() {
   auto unixTime = timeClient.getEpochTime() + (timeZoneOffsetHours * 3600);
   RTCTime timeToSet = RTCTime(unixTime);
   RTC.setTime(timeToSet);
-
+  dht.begin();
 
 }
 /* -------------------------------------------------------------------------- */
@@ -42,6 +42,7 @@ void loop() {
 
 
   read_request(); 
+
   
   if(_delay(lastConnectionTime,10000UL)){  // if ten seconds have passed since your last connection,
       httpRequest(client_print());                       // then connect again and send data:  
@@ -55,8 +56,8 @@ String client_print()
 {
   
   int gas=detectGas();
-  int temp=get_temp();
-  int hum=get_hum();
+  int temp=dhtTemp();
+  int hum=dhtHum();
   String time=get_time();
   char reportTemp[1020];
  
