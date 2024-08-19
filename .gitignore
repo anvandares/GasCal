@@ -2,5 +2,9 @@
 arduino_secrets/**/*
 arduino_secrets.h
 arduino_secrets/
+<<<<<<< HEAD
 Slask/
 
+=======
+slask/
+>>>>>>> 63d978120e284b4625ecbeb15d0dfbf3e1a10db1

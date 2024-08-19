@@ -9,7 +9,7 @@ char pass[] = SECRET_PASS;    // your network password (use for WPA, or use as k
 int status = WL_IDLE_STATUS;
 IPAddress server(IP_ADRESS); //IPAdress for Server/WiFi. 
 uint16_t port = PORT_NUMB; //Portnumber
-int keyIndex = 0;    
+String servStr= server.toString(); //To add IP-adress to sprintf and print to client 
 
 void printWifiStatus();
 void read_request();
@@ -92,8 +92,41 @@ void connectToWiFi()
 
 
 }
-
+ 
+// this method makes a HTTP connection to the server:
 /* -------------------------------------------------------------------------- */
+void httpRequest(String printToClient) {
+/* -------------------------------------------------------------------------- */  
+  // close any connection before send a new request.
+  // This will free the socket on the NINA module
+  client.stop();
+  char buffer[100]; //For printing host 
 
+  // if there's a successful connection:
+  if (client.connect(server, port)) {
+    
+    Serial.println("\nconnecting...");
+    
+    // send the HTTP GET request:
+    client.println(printToClient);
+    client.println("GET / HTTP/1.1");
+    
+    sprintf(buffer, "Host: %s:/%d HTTP/1.1\n", servStr, port); 
+    client.print(buffer); //PRINTS HOST  
+   
+    client.println("User-Agent: ArduinoWiFi/1.1");
+    client.println("Connection: close");
+    
+    
+    client.println();
+
+
+   
+  } else {
+    // if you couldn't make a connection:
+    Serial.println("connection failed");
+   
+  }
+}
 
 
